@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/0xrishabk/goauth/model"
+	"github.com/nullrish/goauth/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

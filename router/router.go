@@ -4,7 +4,7 @@ package router
 import (
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/cors"
-	"github.com/0xrishabk/goauth/handler"
+	"github.com/nullrish/goauth/handler"
 )
 
 func SetupRoutes(app *fiber.App) {
