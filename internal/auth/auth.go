@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/nullrish/goauth/internal/keys"
-	"github.com/nullrish/goauth/model"
+	"github.com/imrishabk/goauth/internal/keys"
+	"github.com/imrishabk/goauth/internal/model"
 )
 
 func SignJWT(u *model.User) (string, error) {
@@ -23,7 +23,7 @@ func SignJWT(u *model.User) (string, error) {
 }
 
 func VerifyJWT(tokenString string) (*jwt.Token, error) {
-	return jwt.Parse(tokenString, func(t *jwt.Token) (interface{}, error) {
+	return jwt.Parse(tokenString, func(t *jwt.Token) (any, error) {
 		if _, ok := t.Method.(*jwt.SigningMethodECDSA); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", t.Header["alg"])
 		}
