@@ -20,13 +20,13 @@ I made this project while learning golang.This backend app is my first project, 
 **Running Server**
 
 ```
-    go run main.go
+    go run cmd/main.go
 ```
 
 OR
 
 ```
-    go build .
+    go build cmd/main.go
     ./goauth
 ```
 
