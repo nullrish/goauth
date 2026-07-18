@@ -10,7 +10,7 @@ const (
 )
 
 type User struct {
-	ID            int64     `gorm:"primaryKey"`
+	ID            int64     `gorm:"primaryKey" json:"id"`
 	Username      string    `gorm:"uniqueIndex;not null" json:"username"`
 	DisplayName   string    `gorm:"not null" json:"display_name"`
 	Email         string    `gorm:"uniqueIndex;not null" json:"email"`

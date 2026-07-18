@@ -1,18 +1,25 @@
-// Package run holds function to run the app itself
-package run
+package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/gofiber/fiber/v3"
+	"github.com/imrishabk/goauth/internal/database"
+	"github.com/imrishabk/goauth/internal/generator"
+	"github.com/imrishabk/goauth/internal/keys"
+	"github.com/imrishabk/goauth/internal/router"
 	"github.com/joho/godotenv"
-	"github.com/nullrish/goauth/database"
-	"github.com/nullrish/goauth/internal/generator"
-	"github.com/nullrish/goauth/internal/keys"
-	"github.com/nullrish/goauth/router"
 )
 
-func InitializeApp() error {
+func main() {
+	if err := initializeApp(); err != nil {
+		log.Fatalln("Failed to start service:", err)
+		os.Exit(1)
+	}
+}
+
+func initializeApp() error {
 	// Load Environment Files
 	godotenv.Load(".env")
 	// Generate Keys
@@ -41,5 +48,5 @@ func InitializeApp() error {
 }
 
 func greetingResponse(c fiber.Ctx) error {
-	return c.SendString("goauth is running\nMade with ❤️ by nullrish.")
+	return c.SendString("goauth is running\nMade with ❤️ by imrishabk.")
 }

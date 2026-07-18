@@ -1,4 +1,4 @@
-module github.com/nullrish/goauth
+module github.com/imrishabk/goauth
 
 go 1.24.3
 

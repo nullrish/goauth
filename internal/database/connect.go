@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/nullrish/goauth/model"
+	"github.com/imrishabk/goauth/internal/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -19,7 +19,8 @@ func ConnectDB() {
 		panic("failed to parse database port")
 	}
 
-	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+	dsn := fmt.Sprintf(
+		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
 		os.Getenv("DB_HOST"),
 		port,
 		os.Getenv("DB_USERNAME"),
@@ -32,6 +33,9 @@ func ConnectDB() {
 	}
 
 	fmt.Println("Connection Opened to database")
-	DB.AutoMigrate(&model.User{})
-	fmt.Println("Database migrated")
+	if err := DB.AutoMigrate(&model.User{}); err == nil {
+		fmt.Println("Database migrated")
+	} else {
+		fmt.Println("Failed to migrate database:", err)
+	}
 }
